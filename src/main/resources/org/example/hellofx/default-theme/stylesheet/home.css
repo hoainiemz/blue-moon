@@ -1,0 +1,74 @@
+* {
+    -fx-unhovered-text-color: white;
+    -fx-hovered-text-color: rgba(22,158,207,255);
+}
+
+.root{
+    -fx-font-size: 16pt;
+    -fx-font-family: "Roboto";
+    /*-fx-background-color: rgba(30,31,32,255);*/
+    -fx-background-color: rgba(241,241,241,255);
+}
+
+#topBar {
+    -fx-background-color: rgba(34,34,34,255);
+}
+
+#topBar Text{
+    -fx-fill: -fx-unhovered-text-color;
+    -fx-font-size: 15pt;
+}
+
+#logoContainer {
+    -fx-cursor: hand;
+}
+
+#logoContainer:hover {
+    -fx-background-color: rgba(51,51,51,255);
+    -fx-effect: dropshadow( one-pass-box , rgba(255,255,255,0.5) , 0, 0.0 , 0 , 1);
+}
+
+#logoContainer:hover Text{
+    -fx-fill: -fx-hovered-text-color;
+}
+
+#profileContainer:hover {
+    -fx-background-color: rgba(51,51,51,255);
+    -fx-effect: dropshadow( one-pass-box , rgba(255,255,255,0.5) , 0, 0.0 , 0 , 1);
+}
+
+#profileContainer:hover Text{
+    -fx-fill: -fx-hovered-text-color;
+}
+
+#profileContainer {
+    -fx-cursor: hand;
+}
+
+.menu-sub-button {
+    -fx-font-size: 10pt;
+    -fx-background-color: rgba(51,51,51,255);
+    -fx-cursor: hand;
+}
+
+#menuContainer {
+    -fx-background-color: rgba(34,34,34,255);
+}
+
+#menuContainer .menu-main-button  {
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+}
+
+#menuContainer .menu-main-button:hover  {
+    -fx-background-color: rgba(18,18,18,255);
+}
+
+#menuContainer Button:hover{
+    -fx-text-fill: -fx-hovered-text-color;
+}
+
+.selected-main-menu {
+    -fx-background-color: rgba(0,109,165,255) !important;
+    -fx-text-fill: white !important;
+}
