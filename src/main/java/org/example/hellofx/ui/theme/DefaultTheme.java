@@ -1,6 +1,7 @@
 package org.example.hellofx.ui.theme;
 
 import com.sun.source.tree.Tree;
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -19,6 +20,7 @@ import javafx.scene.text.TextFlow;
 import javafx.scene.image.ImageView;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.example.hellofx.controller.logincontroller.LoginController;
 import org.example.hellofx.controller.profilecontroller.Profile;
 import org.example.hellofx.controller.profilecontroller.ProfileController;
@@ -232,19 +234,16 @@ public class DefaultTheme implements Theme {
 
         Popup popup = new Popup();
         popup.getContent().add(profileDropDownContent);
-        popup.setAutoHide(true);
         popup.setWidth(profileContainer.getPrefWidth());
         profileDropDownContent.setPrefWidth(profileContainer.getPrefWidth());
         profileContainer.setOnMouseClicked(event -> {
             if (popup.isShowing()) {
                 popup.hide();
-                event.consume();
             }
             else {
                 double x = profileContainer.localToScreen(profileContainer.getBoundsInLocal()).getMinX();
-                double y = profileContainer.localToScreen(profileContainer.getBoundsInLocal()).getMaxY();
+                double y = profileContainer.localToScreen(profileContainer.getBoundsInLocal()).getMaxY() - 5;
                 popup.show(scene.getWindow(), x, y);
-                event.consume();
             }
         });
 
