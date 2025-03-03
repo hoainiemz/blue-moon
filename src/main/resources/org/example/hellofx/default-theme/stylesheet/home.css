@@ -95,3 +95,44 @@
 .profile-drop-down TextFlow:hover Text {
     -fx-fill: -fx-hovered-text-color !important;
 }
+
+.doi-mat-khau .big-text Text {
+    -fx-fill: rgba(57,64,84,255);
+    -fx-font-size: 28pt;
+}
+
+.doi-mat-khau Text {
+    -fx-fill: black;
+}
+
+.doi-mat-khau > TextFlow {
+    -fx-border-color: transparent transparent rgba(207,207,207,255) transparent;
+}
+
+.form TextFlow {
+    -fx-text-alignment: center;
+}
+
+.doi-mat-khau .form PasswordField {
+    -fx-background-color: white;
+    -fx-text-fill: rgba(85,85,85,255);
+    -fx-font-size: 18px;
+}
+
+.doi-mat-khau .form PasswordField:hover {
+    -fx-effect: dropshadow(gaussian, #bbd8f8, 8, 0.5, 0, 0);
+}
+
+.doi-mat-khau .form PasswordField:focused {
+    -fx-effect: dropshadow(gaussian, #bbd8f8, 8, 0.5, 0, 0);
+}
+
+.doi-mat-khau Button {
+    -fx-background-color: rgba(164,42,0,255);
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+}
+
+.state-text Text {
+    -fx-font-size: 15px;
+}

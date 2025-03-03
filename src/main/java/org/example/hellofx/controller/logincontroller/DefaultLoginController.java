@@ -13,15 +13,15 @@ public class DefaultLoginController implements LoginController {
     @Autowired
     ProfileController profileController;
 
-    public String loginButtonClicked(String username, String password) {
+    public String loginButtonClickedRequest(String username, String password) {
         Profile response = dataBaseHandler.getLoginState(username, password);
         if (response != null) {
-            profileController.logIn(response);
+            profileController.logInRequest(response);
         }
         return response != null ? response.toString() : null;
     }
 
-    public void signUpButtonClicked() {
+    public void signUpButtonClickedRequest() {
         System.out.println("Sign up button clicked");
     }
 }

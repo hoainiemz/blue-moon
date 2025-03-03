@@ -12,4 +12,11 @@ public interface DataBaseHandler {
      * @return a profile of the matched account
      */
     public Profile getLoginState(String username, String password);
+
+    /**
+     * change the profile's password
+     * @param profile
+     * @param newPassword
+     */
+    public void passwordChangeQuery(Profile profile, String newPassword);
 }

@@ -9,10 +9,10 @@ public interface LoginController {
      * @param password
      * @return the string for the profile
      */
-    public String loginButtonClicked(String username, String password);
+    public String loginButtonClickedRequest(String username, String password);
 
     /**
      * user clicked the signup button
      */
-    public void signUpButtonClicked();
+    public void signUpButtonClickedRequest();
 }

@@ -17,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.scene.image.ImageView;
@@ -115,13 +116,13 @@ public class DefaultTheme implements Theme {
 //        logInState.getStyleClass().add("hidden");
         logInState.setVisible(false);
         logInButton.setOnAction(event -> {
-            String response = loginController.loginButtonClicked(usernameField.getText(), passwordField.getText());
+            String response = loginController.loginButtonClickedRequest(usernameField.getText(), passwordField.getText());
             if (response == null) {
                 logInState.setVisible(true);
             }
         });
         signUpButton.setOnMouseClicked(event -> {
-            loginController.signUpButtonClicked();
+            loginController.signUpButtonClickedRequest();
         });
         glowEffect = new Glow(0.5);
         bloomEffect = new Bloom();
@@ -214,7 +215,7 @@ public class DefaultTheme implements Theme {
         HBox profileContainer = (HBox) scene.lookup("#profileContainer");
         topProfile.setAlignment(Pos.CENTER_RIGHT);
         profileContainer.setAlignment(Pos.CENTER_RIGHT);
-        Text welcome = new Text("Chào mừng bạn, " + profileController.getProfileName());
+        Text welcome = new Text("Chào mừng bạn, " + profileController.getProfileNameRequest());
         Image userIcon = new Image("images/user-icon.jpg");
         ImageView userImg = new ImageView(userIcon);
         userImg.setFitHeight(topBar.getPrefHeight() * 0.5);
@@ -228,13 +229,13 @@ public class DefaultTheme implements Theme {
         profileDropDownContent.setAlignment(Pos.CENTER);
         profileDropDownContent.setPadding(new Insets(10, 0, 10, 0));
         profileDropDownContent.getChildren().addAll(
-                new TextFlow(new Text(profileController.getProfileName())),
+                new TextFlow(new Text(profileController.getProfileNameRequest())),
                 new TextFlow(new Text("Đổi mật khẩu")),
                 new TextFlow(new Text("Đăng xuất"))
         );
 
         Popup popup = new Popup();
-        popup.setAutoHide(true);
+//        popup.setAutoHide(true);
         popup.getContent().add(profileDropDownContent);
         popup.setWidth(profileContainer.getPrefWidth());
         profileDropDownContent.setPrefWidth(profileContainer.getPrefWidth());
@@ -249,16 +250,19 @@ public class DefaultTheme implements Theme {
             }
         });
         profileDropDownContent.getChildren().get(2).setOnMouseClicked(event -> {
-            profileController.logOut();
             popup.hide();
+            profileController.logOutRequest();
         });
-
+        profileDropDownContent.getChildren().get(1).setOnMouseClicked(event -> {
+            popup.hide();
+            profileController.passwordChangeClickButtonRequest();
+        });
         profileDropDownContent.setPrefWidth(ScreenUtils.getScreenWidth() * 0.2);
 //        System.out.println(profileContainer.getLayoutBounds().getWidth());
 
         // container
         VBox menuContainer = (VBox) scene.lookup("#menuContainer");
-        Region content = (Region) scene.lookup("#content");
+        VBox content = (VBox) scene.lookup("#content");
         menuContainer.setPrefWidth(ScreenUtils.getScreenWidth() * 0.1);
         content.setPrefWidth(ScreenUtils.getScreenWidth() * 0.9);
         content.setOnMouseClicked(event -> {
@@ -330,6 +334,112 @@ public class DefaultTheme implements Theme {
         resetMenuBar();
 
 //        menuContainer.setSpacing(10);
+        return scene;
+    }
+
+    public Scene getPasswordChangeScene() {
+        HBox container = (HBox) scene.lookup("#container");
+        VBox content = (VBox) scene.lookup("#content");
+        content.getChildren().clear();
+        content.getStyleClass().clear();
+        content.getStyleClass().add("doi-mat-khau");
+        TextFlow passwordChange = new TextFlow(new Text("Thay đổi mật khẩu:"));
+        passwordChange.getStyleClass().add("big-text");
+        content.setPadding(new Insets(20, 50, 10, 50));
+        HBox mainContent = new HBox();
+        passwordChange.setPrefHeight(container.getPrefHeight() * 0.1);
+        mainContent.setPrefHeight(container.getPrefHeight() * 0.9);
+        content.getChildren().addAll(passwordChange, mainContent);
+        VBox form = new VBox();
+        form.getStyleClass().add("form");
+//        form.setPrefHeight(content.getPrefHeight() * 0.5);
+        mainContent.getChildren().addAll(form);
+        mainContent.setPadding(new Insets(10, 0, 10, 0));
+        HBox matKhauCu = new HBox();
+        HBox matKhauCuTextContainer = new HBox();
+        TextFlow matKhauCuText = new TextFlow(new Text("Mật khẩu cũ:"));
+        matKhauCuTextContainer.getChildren().addAll(matKhauCuText);
+        matKhauCuTextContainer.setAlignment(Pos.CENTER_LEFT);
+        HBox matKhauCuPasswordFieldContainer = new HBox();
+        PasswordField matKhauCuPasswordField = new PasswordField();
+        matKhauCuPasswordFieldContainer.getChildren().add(matKhauCuPasswordField);
+        matKhauCuPasswordFieldContainer.setAlignment(Pos.CENTER_LEFT);
+        matKhauCu.getChildren().addAll(matKhauCuTextContainer, matKhauCuPasswordFieldContainer);
+        form.setPrefWidth(content.getPrefWidth() * 0.4);
+        matKhauCuTextContainer.setPrefWidth(form.getPrefWidth() * 0.5);
+        matKhauCuPasswordFieldContainer.setPrefWidth(form.getPrefWidth() * 0.5);
+
+        HBox matKhauMoiTextContainer = new HBox();
+        HBox matKhauMoi = new HBox();
+        TextFlow matKhauMoiText = new TextFlow(new Text("Mật khẩu mới:"));
+        matKhauMoiTextContainer.getChildren().addAll(matKhauMoiText);
+        matKhauMoiTextContainer.setAlignment(Pos.CENTER_LEFT);
+        HBox matKhauMoiPasswordFieldContainer = new HBox();
+        PasswordField matKhauMoiPasswordField = new PasswordField();
+        matKhauMoiPasswordFieldContainer.getChildren().add(matKhauMoiPasswordField);
+        matKhauMoiPasswordFieldContainer.setAlignment(Pos.CENTER_LEFT);
+        matKhauMoi.getChildren().addAll(matKhauMoiTextContainer, matKhauMoiPasswordFieldContainer);
+        matKhauMoiTextContainer.setPrefWidth(form.getPrefWidth() * 0.5);
+        matKhauMoiPasswordFieldContainer.setPrefWidth(form.getPrefWidth() * 0.5);
+
+        HBox xacNhanMatKhauMoiTextContainer = new HBox();
+        HBox xacNhanMatKhauMoi = new HBox();
+        TextFlow xacNhanMatKhauMoiText = new TextFlow(new Text("Xác nhận mật khẩu mới:"));
+        xacNhanMatKhauMoiTextContainer.getChildren().addAll(xacNhanMatKhauMoiText);
+        xacNhanMatKhauMoiTextContainer.setAlignment(Pos.CENTER_LEFT);
+        HBox xacNhanMatKhauMoiPasswordFieldContainer = new HBox();
+        PasswordField xacNhanMatKhauMoiPasswordField = new PasswordField();
+        xacNhanMatKhauMoiPasswordFieldContainer.getChildren().add(xacNhanMatKhauMoiPasswordField);
+        xacNhanMatKhauMoiPasswordFieldContainer.setAlignment(Pos.CENTER_LEFT);
+        xacNhanMatKhauMoi.getChildren().addAll(xacNhanMatKhauMoiTextContainer, xacNhanMatKhauMoiPasswordFieldContainer);
+        xacNhanMatKhauMoiTextContainer.setPrefWidth(form.getPrefWidth() * 0.5);
+        xacNhanMatKhauMoiPasswordFieldContainer.setPrefWidth(form.getPrefWidth() * 0.5);
+//        xacNhanMatKhauMoi.setStyle("-fx-border-color: transparent transparent rgba(207,207,207,255) transparent;" +
+//                                   "-fx-padding: 0 0 10px 0");
+;
+        HBox stateContainer = new HBox();
+        TextFlow stateText = new TextFlow(new Text("Password changed successfully!"));
+        stateContainer.getChildren().addAll(stateText);
+        stateContainer.setAlignment(Pos.CENTER_LEFT);
+        stateText.getStyleClass().add("state-text");
+        stateText.setVisible(false);
+
+        HBox doiMatKhauButtonContainer = new HBox();
+        Button doiMatKhauButton = new Button("Đổi mật khẩu");
+        doiMatKhauButton.setPadding(new Insets(10, 20, 10, 20));
+        doiMatKhauButton.setOnMouseEntered(event -> {
+            doiMatKhauButton.setEffect(glowEffect);
+        });
+        doiMatKhauButton.setOnMouseExited(event -> {
+            doiMatKhauButton.setEffect(null);
+        });
+        doiMatKhauButton.setOnAction(event -> {
+           String state = profileController.passwordChangeRequest(matKhauCuPasswordField.getText(), matKhauMoiPasswordField.getText(), xacNhanMatKhauMoiPasswordField.getText());
+           Text child = (Text) stateText.getChildren().get(0);
+           child.setText(state);
+            if (state.equals("Password changed successfully!")) {
+                child.setFill(Color.valueOf("#549159"));
+            }
+            else {
+                child.setFill(Color.RED);
+            }
+           stateText.setVisible(true);
+
+           System.out.println(state);
+        });
+        doiMatKhauButtonContainer.getChildren().addAll(doiMatKhauButton);
+        form.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                doiMatKhauButton.fire();
+            }
+        });
+
+        form.getChildren().addAll(matKhauCu, matKhauMoi, xacNhanMatKhauMoi, stateContainer, doiMatKhauButtonContainer);
+
+        form.setSpacing(10);
+
+        content.setSpacing(20);
+
         return scene;
     }
 

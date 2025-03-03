@@ -10,21 +10,32 @@ public interface ProfileController {
      * user logged in succesfull, tell application to log in
      * @param profile
      */
-    public void logIn(Profile profile);
+    public void logInRequest(Profile profile);
 
     /**
      *
      * @return current username
      */
-    public String getProfileName();
+    public String getProfileNameRequest();
 
     /**
      * user logged out, get back to the login page
      */
-    public void logOut();
+    public void logOutRequest();
 
     /**
      * user want to change the password, help him
      */
-    public void changePassword();
+    public void passwordChangeClickButtonRequest();
+
+    /**
+     * check if logged in or not
+     */
+    public boolean isLoggedIn();
+
+    /**
+     * user filled the password change form, send the request to the database
+     * @return a string, state of the request
+     */
+    public String passwordChangeRequest(String currentPassword, String newPassword, String confirmPassword);
 }

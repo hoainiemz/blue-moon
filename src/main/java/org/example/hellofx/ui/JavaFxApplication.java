@@ -35,4 +35,9 @@ public class JavaFxApplication extends Application {
         Theme theme = SpringBootFxApplication.context.getBean(Theme.class);
         currentStage.setScene(theme.getLoginScene());
     }
+
+    public static void showPasswordChangeScene(){
+        Theme theme = SpringBootFxApplication.context.getBean(Theme.class);
+        currentStage.setScene(theme.getPasswordChangeScene());
+    }
 }

@@ -16,5 +16,10 @@ public interface Theme {
      * @return the home scene of your application
      */
     public Scene getHomeScene();
+
+    /**
+     * @return the password change scene of your application
+     */
+    public Scene getPasswordChangeScene();
     public void show();
 }
