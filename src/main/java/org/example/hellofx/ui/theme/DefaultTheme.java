@@ -17,6 +17,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.scene.image.ImageView;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
 import org.example.hellofx.controller.logincontroller.LoginController;
 import org.example.hellofx.controller.profilecontroller.Profile;
 import org.example.hellofx.controller.profilecontroller.ProfileController;
@@ -217,6 +219,34 @@ public class DefaultTheme implements Theme {
         topProfile.setSpacing(20);
         profileContainer.setSpacing(20);
         profileContainer.setPadding(new Insets(0, 40, 0, 40));
+        VBox profileDropDownContent = new VBox();
+        profileDropDownContent.getStyleClass().add("profile-drop-down");
+        profileDropDownContent.setSpacing(10);
+        profileDropDownContent.setAlignment(Pos.CENTER);
+        profileDropDownContent.setPadding(new Insets(10, 0, 10, 0));
+        profileDropDownContent.getChildren().addAll(
+                new TextFlow(new Text("Option 1")),
+                new TextFlow(new Text("Option 2")),
+                new TextFlow(new Text("Option 3"))
+        );
+
+        Popup popup = new Popup();
+        popup.getContent().add(profileDropDownContent);
+        popup.setAutoHide(true);
+        popup.setWidth(profileContainer.getPrefWidth());
+        profileDropDownContent.setPrefWidth(profileContainer.getPrefWidth());
+        profileContainer.setOnMouseEntered(event -> {
+            double x = profileContainer.localToScreen(profileContainer.getBoundsInLocal()).getMinX();
+            double y = profileContainer.localToScreen(profileContainer.getBoundsInLocal()).getMaxY();
+            popup.show(scene.getWindow(), x, y);
+        });
+
+        profileContainer.setOnMouseExited(event -> {
+            popup.hide();
+        });
+
+        profileDropDownContent.setPrefWidth(ScreenUtils.getScreenWidth() * 0.2);
+//        System.out.println(profileContainer.getLayoutBounds().getWidth());
 
         // container
         VBox menuContainer = (VBox) scene.lookup("#menuContainer");
