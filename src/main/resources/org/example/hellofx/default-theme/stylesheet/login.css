@@ -47,3 +47,7 @@
     -fx-fill: red;
     -fx-font-size: 10pt;
 }
+
+.hidden {
+    visibility: None !important;
+}

@@ -28,7 +28,9 @@
                 <TextField id="usernameField"></TextField>
                 <VBox fx:id="passwordFieldContainer">
                     <PasswordField id="passwordField"></PasswordField>
-                    <TextFlow fx:id="logInState"></TextFlow>
+                    <TextFlow fx:id="logInState">
+                        <Text id="loginFailednotification"></Text>
+                    </TextFlow>
                 </VBox>
                 <HBox id="buttonContainer">
                     <Button id="logInButton" HBox.hgrow="ALWAYS"></Button>

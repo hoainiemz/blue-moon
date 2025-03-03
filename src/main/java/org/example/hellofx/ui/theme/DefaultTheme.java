@@ -30,7 +30,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@Primary
 public class DefaultTheme implements Theme {
     @Autowired
     private LoginController loginController;
@@ -105,11 +104,14 @@ public class DefaultTheme implements Theme {
         buttonContainer.setAlignment(Pos.BASELINE_LEFT);
         buttonContainer.setSpacing(30);
         TextFlow logInState = (TextFlow) scene.lookup("#logInState");
+        Text loginFailednotification = (Text) scene.lookup("#loginFailednotification");
+        loginFailednotification.setText("Invalid username or password");
+//        logInState.getStyleClass().add("hidden");
+        logInState.setVisible(false);
         logInButton.setOnAction(event -> {
-            logInState.getChildren().clear();
             String response = loginController.loginButtonClicked(usernameField.getText(), passwordField.getText());
             if (response == null) {
-                logInState.getChildren().add(new Text("Invalid handle/email or password"));
+                logInState.setVisible(true);
             }
         });
         signUpButton.setOnMouseClicked(event -> {
