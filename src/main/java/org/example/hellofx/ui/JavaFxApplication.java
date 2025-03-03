@@ -20,14 +20,19 @@ public class JavaFxApplication extends Application {
         Application.setUserAgentStylesheet(new PrimerDark().getUserAgentStylesheet());
         currentStage.setTitle("Hello World");
         Theme theme = SpringBootFxApplication.context.getBean(Theme.class);
-        currentStage.setScene(theme.getLoginScene());
+        showLoginScene();
         currentStage.setWidth(ScreenUtils.getScreenWidth());
         currentStage.setHeight(ScreenUtils.getScreenHeight());
         currentStage.show();
     }
 
-    public static void showHome(){
+    public static void showHomeScene(){
         Theme theme = SpringBootFxApplication.context.getBean(Theme.class);
         currentStage.setScene(theme.getHomeScene());
+    }
+
+    public static void showLoginScene(){
+        Theme theme = SpringBootFxApplication.context.getBean(Theme.class);
+        currentStage.setScene(theme.getLoginScene());
     }
 }

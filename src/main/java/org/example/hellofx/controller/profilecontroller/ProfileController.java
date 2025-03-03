@@ -12,5 +12,19 @@ public interface ProfileController {
      */
     public void logIn(Profile profile);
 
+    /**
+     *
+     * @return current username
+     */
     public String getProfileName();
+
+    /**
+     * user logged out, get back to the login page
+     */
+    public void logOut();
+
+    /**
+     * user want to change the password, help him
+     */
+    public void changePassword();
 }

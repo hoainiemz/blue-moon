@@ -2,6 +2,7 @@ package org.example.hellofx.ui.theme;
 
 import com.sun.source.tree.Tree;
 import javafx.animation.FadeTransition;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -12,6 +13,7 @@ import javafx.scene.effect.Bloom;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
@@ -223,16 +225,16 @@ public class DefaultTheme implements Theme {
         profileContainer.setPadding(new Insets(0, 40, 0, 40));
         VBox profileDropDownContent = new VBox();
         profileDropDownContent.getStyleClass().add("profile-drop-down");
-        profileDropDownContent.setSpacing(10);
         profileDropDownContent.setAlignment(Pos.CENTER);
         profileDropDownContent.setPadding(new Insets(10, 0, 10, 0));
         profileDropDownContent.getChildren().addAll(
-                new TextFlow(new Text("Option 1")),
-                new TextFlow(new Text("Option 2")),
-                new TextFlow(new Text("Option 3"))
+                new TextFlow(new Text(profileController.getProfileName())),
+                new TextFlow(new Text("Đổi mật khẩu")),
+                new TextFlow(new Text("Đăng xuất"))
         );
 
         Popup popup = new Popup();
+        popup.setAutoHide(true);
         popup.getContent().add(profileDropDownContent);
         popup.setWidth(profileContainer.getPrefWidth());
         profileDropDownContent.setPrefWidth(profileContainer.getPrefWidth());
@@ -245,6 +247,10 @@ public class DefaultTheme implements Theme {
                 double y = profileContainer.localToScreen(profileContainer.getBoundsInLocal()).getMaxY() - 5;
                 popup.show(scene.getWindow(), x, y);
             }
+        });
+        profileDropDownContent.getChildren().get(2).setOnMouseClicked(event -> {
+            profileController.logOut();
+            popup.hide();
         });
 
         profileDropDownContent.setPrefWidth(ScreenUtils.getScreenWidth() * 0.2);
