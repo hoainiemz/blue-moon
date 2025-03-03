@@ -235,14 +235,17 @@ public class DefaultTheme implements Theme {
         popup.setAutoHide(true);
         popup.setWidth(profileContainer.getPrefWidth());
         profileDropDownContent.setPrefWidth(profileContainer.getPrefWidth());
-        profileContainer.setOnMouseEntered(event -> {
-            double x = profileContainer.localToScreen(profileContainer.getBoundsInLocal()).getMinX();
-            double y = profileContainer.localToScreen(profileContainer.getBoundsInLocal()).getMaxY();
-            popup.show(scene.getWindow(), x, y);
-        });
-
-        profileContainer.setOnMouseExited(event -> {
-            popup.hide();
+        profileContainer.setOnMouseClicked(event -> {
+            if (popup.isShowing()) {
+                popup.hide();
+                event.consume();
+            }
+            else {
+                double x = profileContainer.localToScreen(profileContainer.getBoundsInLocal()).getMinX();
+                double y = profileContainer.localToScreen(profileContainer.getBoundsInLocal()).getMaxY();
+                popup.show(scene.getWindow(), x, y);
+                event.consume();
+            }
         });
 
         profileDropDownContent.setPrefWidth(ScreenUtils.getScreenWidth() * 0.2);
