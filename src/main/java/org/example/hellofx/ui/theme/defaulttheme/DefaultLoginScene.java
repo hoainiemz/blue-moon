@@ -23,20 +23,20 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 @Component
-public class DefaultLoginSceneScene implements LoginScene {
+public class DefaultLoginScene implements LoginScene {
     @Autowired
     private LoginController loginController;
 
     public Scene getLoginScene(){
         Scene scene = JavaFxApplication.getCurrentScene();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/hellofx/default-theme/fxml/login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/themes/default-theme/fxml/login.fxml"));
         try {
             scene = new Scene(fxmlLoader.load());
         }
         catch (IOException e) {
             return null;
         }
-        scene.getStylesheets().add("/org/example/hellofx/default-theme/stylesheet/login.css");
+        scene.getStylesheets().add("/themes/default-theme/stylesheet/login.css");
         // The Frame
         VBox frame = (VBox) scene.lookup("#frame");
         frame.setMaxWidth(ScreenUtils.getScreenWidth() * 0.8);

@@ -28,7 +28,7 @@ import java.util.List;
 
 
 @Component
-public class DefaultHomeSceneScene implements HomeScene {
+public class DefaultHomeScene implements HomeScene {
     @Autowired
     HomeController homeController;
     @Autowired
@@ -58,14 +58,14 @@ public class DefaultHomeSceneScene implements HomeScene {
 //        final Scene scene = JavaFxApplication.getCurrentScene();
         final Scene scene;
         menuButtonList = new ArrayList<RadioButton>();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/hellofx/default-theme/fxml/home.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/themes/default-theme/fxml/home.fxml"));
         try {
             scene = new Scene(fxmlLoader.load());
         }
         catch (IOException exception) {
             return null;
         }
-        scene.getStylesheets().add("/org/example/hellofx/default-theme/stylesheet/home.css");
+        scene.getStylesheets().add("/themes/default-theme/stylesheet/home.css");
 
         HBox topBar = (HBox) scene.lookup("#topBar");
         HBox container = (HBox) scene.lookup("#container");
@@ -188,6 +188,9 @@ public class DefaultHomeSceneScene implements HomeScene {
         thongTinCaNhan.getStyleClass().add("menu-sub-button");
         Button doiMatKhau = new Button("Đổi mật khẩu");
         doiMatKhau.getStyleClass().add("menu-sub-button");
+        doiMatKhau.setOnAction(event -> {
+            homeController.passwordChangeButtonClicked();
+        });
         myProfileContainer.getChildren().addAll(myProfile, thongTinCaNhan, doiMatKhau);
 
         ToggleGroup menuToggleGroup = new ToggleGroup();
