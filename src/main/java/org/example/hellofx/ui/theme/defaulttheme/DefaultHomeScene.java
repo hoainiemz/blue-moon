@@ -58,14 +58,14 @@ public class DefaultHomeScene implements HomeScene {
 //        final Scene scene = JavaFxApplication.getCurrentScene();
         final Scene scene;
         menuButtonList = new ArrayList<RadioButton>();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/themes/default-theme/fxml/home.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/themes/default-theme/home/home.fxml"));
         try {
             scene = new Scene(fxmlLoader.load());
         }
         catch (IOException exception) {
             return null;
         }
-        scene.getStylesheets().add("/themes/default-theme/stylesheet/home.css");
+        scene.getStylesheets().add("/themes/default-theme/home/home.css");
 
         HBox topBar = (HBox) scene.lookup("#topBar");
         HBox container = (HBox) scene.lookup("#container");

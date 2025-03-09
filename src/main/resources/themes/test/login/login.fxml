@@ -6,9 +6,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<HBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.hellofx.ui.theme.test.TestLoginScene"
             prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+    <VBox id="leftFrame">
+        <HBox id="huster"></HBox>
+        <VBox id="bluemoon"></VBox>
+        <VBox id="loginForm"></VBox>
+        <VBox id="statusContainer"></VBox>
+        <HBox id="buttonContainer"></HBox>
+    </VBox>
+    <VBox id="rightFrame"></VBox>
+</HBox>

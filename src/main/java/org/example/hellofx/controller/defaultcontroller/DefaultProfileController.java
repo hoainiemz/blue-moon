@@ -30,7 +30,7 @@ public class DefaultProfileController implements ProfileController {
         return null;
     }
 
-    public void logOutRequest() {
+    public void logOutRequest(){
         this.profile = null;
         System.out.println("Logged out succesfully!");
         JavaFxApplication.showLoginScene();

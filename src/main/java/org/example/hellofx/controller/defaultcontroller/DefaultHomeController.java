@@ -11,7 +11,7 @@ public class DefaultHomeController implements HomeController {
     @Autowired
     private ProfileController profileController;
 
-    public void logoutButtonClicked() {
+    public void logoutButtonClicked(){
         profileController.logOutRequest();
     }
 

@@ -18,10 +18,12 @@ import org.example.hellofx.ui.theme.LoginScene;
 import org.example.hellofx.ui.utils.Effects;
 import org.example.hellofx.ui.utils.ScreenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+//@Primary
 @Component
 public class DefaultLoginScene implements LoginScene {
     @Autowired
@@ -29,14 +31,14 @@ public class DefaultLoginScene implements LoginScene {
 
     public Scene getLoginScene(){
         Scene scene = JavaFxApplication.getCurrentScene();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/themes/default-theme/fxml/login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/themes/default-theme/login/login.fxml"));
         try {
             scene = new Scene(fxmlLoader.load());
         }
         catch (IOException e) {
             return null;
         }
-        scene.getStylesheets().add("/themes/default-theme/stylesheet/login.css");
+        scene.getStylesheets().add("/themes/default-theme/login/login.css");
         // The Frame
         VBox frame = (VBox) scene.lookup("#frame");
         frame.setMaxWidth(ScreenUtils.getScreenWidth() * 0.8);

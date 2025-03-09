@@ -1,0 +1,95 @@
+.root {
+    -fx-background-color: red;
+    -fx-font-size: 16pt;
+    -fx-font-family: "Roboto";
+}
+
+#leftFrame {
+    -fx-background-color: rgba(255,255,255,255);
+}
+
+#rightFrame {
+    -fx-background-color: rgba(218,240,251,255);
+}
+
+#huster {
+    -fx-font-size: 20;
+}
+
+#huster Text {
+    -fx-fill: black;
+    -fx-background-color: green;
+}
+
+#bluemoon Image {
+    -fx-border-color: red;
+    -fx-border-insets: 10px;
+}
+
+#bluemoon {
+    -fx-font-size: 35;
+    /*-fx-background-color: blue;*/
+}
+
+#bluemoon Text {
+    -fx-fill: black;
+}
+
+.login-text-field {
+    /*-fx-background-color: yellow;*/
+    -fx-border-color: #9ab0c2;
+    -fx-border-radius: 5px;
+}
+
+.login-text-field TextField {
+    -fx-background-color: white;
+    -fx-prompt-text-fill: #9ab0c2;
+    -fx-text-fill: #9ab0c2;
+}
+
+.login-text-field PasswordField {
+    -fx-background-color: white;
+    -fx-prompt-text-fill: #9ab0c2;
+    -fx-text-fill: #9ab0c2;
+}
+
+#statusContainer Text {
+    -fx-font-size: 15px;
+    -fx-fill: red;
+}
+.login-button {
+    -fx-background-color: #1a8cff; /* Bright blue color */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 30px;
+    -fx-background-radius: 30px; /* Rounded corners */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2);
+    -fx-cursor: hand;
+    -fx-translate-y: 20px;
+}
+
+.login-button:hover {
+    -fx-background-color: #0066cc; /* Darker blue on hover */
+}
+
+.login-button:pressed {
+    -fx-background-color: #0052a3; /* Even darker when pressed */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 3, 0, 0, 1);
+}
+
+.register-button {
+    -fx-background-color: transparent; /* Bright blue color */
+    -fx-text-fill: #9ab0c2;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 30px;
+    -fx-background-radius: 30px; /* Rounded corners */
+    /*-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2);*/
+    -fx-translate-y: 20px;
+    -fx-cursor: hand;
+}
+
+.register-button:pressed {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 3, 0, 0, 1);
+}
