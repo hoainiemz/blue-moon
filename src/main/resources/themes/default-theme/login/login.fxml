@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.text.Text?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="org.example.hellofx.ui.theme.defaulttheme.DefaultLoginScene">
+
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+<!--    <Button text="Hello!"/>-->
+<!--    <Circle fx:id="backgroundCircle"></Circle>-->
+
+    <VBox fx:id="frame">
+        <HBox fx:id="logoContainer"></HBox>
+        <HBox fx:id="mainContainer">
+            <VBox fx:id="loginForm" HBox.hgrow="ALWAYS">
+                <TextFlow fx:id="stateText"></TextFlow>
+                <TextField id="usernameField"></TextField>
+                <VBox fx:id="passwordFieldContainer">
+                    <PasswordField id="passwordField"></PasswordField>
+                    <TextFlow fx:id="logInState">
+                        <Text id="loginFailednotification"></Text>
+                    </TextFlow>
+                </VBox>
+                <HBox id="buttonContainer">
+                    <Button id="logInButton" HBox.hgrow="ALWAYS"></Button>
+                    <Button id="signUpButton" HBox.hgrow="ALWAYS"></Button>
+                </HBox>
+            </VBox>
+            <VBox fx:id="subframe" HBox.hgrow="ALWAYS">
+                <TextFlow>
+                    <Text id="label1"></Text>
+                </TextFlow>
+                <TextFlow>
+                    <Text id="label2"></Text>
+                </TextFlow>
+            </VBox>
+        </HBox>
+    </VBox>
+
+</StackPane>
