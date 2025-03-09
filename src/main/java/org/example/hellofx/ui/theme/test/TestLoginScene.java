@@ -30,10 +30,10 @@ interface MyFun {
     public HBox func(String a, String b, boolean c);
 };
 
-@Primary
-@Component
+//@Primary
+//@Component
 public class TestLoginScene implements LoginScene {
-    @Autowired
+//    @Autowired
     private LoginController loginController;
 
     @Override
