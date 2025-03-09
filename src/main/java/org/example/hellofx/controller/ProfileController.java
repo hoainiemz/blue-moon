@@ -1,8 +1,6 @@
-package org.example.hellofx.controller.profilecontroller;
+package org.example.hellofx.controller;
 
 import org.springframework.stereotype.Component;
-
-import java.io.IOException;
 
 @Component
 public interface ProfileController {
@@ -10,7 +8,7 @@ public interface ProfileController {
      * user logged in succesfull, tell application to log in
      * @param profile
      */
-    public void logInRequest(Profile profile);
+    public void logInRequest(UserAccount profile);
 
     /**
      *
@@ -22,11 +20,6 @@ public interface ProfileController {
      * user logged out, get back to the login page
      */
     public void logOutRequest();
-
-    /**
-     * user want to change the password, help him
-     */
-    public void passwordChangeClickButtonRequest();
 
     /**
      * check if logged in or not

@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Text?>
 <StackPane xmlns="http://javafx.com/javafx"
            xmlns:fx="http://javafx.com/fxml"
-           fx:controller="org.example.hellofx.ui.theme.DefaultTheme">
+           fx:controller="org.example.hellofx.ui.theme.defaulttheme.DefaultLoginSceneScene">
 
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>

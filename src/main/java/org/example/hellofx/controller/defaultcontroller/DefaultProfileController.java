@@ -1,19 +1,23 @@
-package org.example.hellofx.controller.profilecontroller;
+package org.example.hellofx.controller.defaultcontroller;
 
-import org.example.hellofx.handler.databasehandler.DataBaseHandler;
+import org.example.hellofx.controller.ProfileController;
+import org.example.hellofx.controller.UserAccount;
+import org.example.hellofx.handler.DataBaseHandler;
 import org.example.hellofx.ui.JavaFxApplication;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DefaultProfileController implements ProfileController {
-    private final DataBaseHandler dataBaseHandler;
-    private Profile profile;
+    @Autowired
+    private DataBaseHandler dataBaseHandler;
+    private UserAccount profile;
 
-    public DefaultProfileController(DataBaseHandler dataBaseHandler) {
-        this.dataBaseHandler = dataBaseHandler;
-    }
+//    public DefaultProfileController(DataBaseHandler dataBaseHandler) {
+//        this.dataBaseHandler = dataBaseHandler;
+//    }
 
-    public void logInRequest (Profile profile) {
+    public void logInRequest (UserAccount profile) {
         this.profile = profile;
         System.out.println("Logged in with profile: " + profile);
         JavaFxApplication.showHomeScene();
@@ -42,11 +46,6 @@ public class DefaultProfileController implements ProfileController {
         }
         dataBaseHandler.passwordChangeQuery(profile, newPassword);
         return "Password changed successfully!";
-    }
-
-    public void passwordChangeClickButtonRequest() {
-        assert isLoggedIn();
-        JavaFxApplication.showPasswordChangeScene();
     }
 
     public boolean isLoggedIn() {

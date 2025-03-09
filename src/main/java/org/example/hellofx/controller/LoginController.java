@@ -1,6 +1,4 @@
-package org.example.hellofx.controller.logincontroller;
-
-import java.io.IOException;
+package org.example.hellofx.controller;
 
 public interface LoginController {
     /**
@@ -9,10 +7,10 @@ public interface LoginController {
      * @param password
      * @return the string for the profile
      */
-    public String loginButtonClickedRequest(String username, String password);
+    public String loginButtonClicked(String username, String password);
 
     /**
      * user clicked the signup button
      */
-    public void signUpButtonClickedRequest();
+    public void signUpButtonClicked();
 }
