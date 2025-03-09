@@ -30,10 +30,10 @@ interface MyFun {
     public HBox func(String a, String b, boolean c);
 };
 
-//@Primary
-//@Component
+@Primary
+@Component
 public class TestLoginScene implements LoginScene {
-//    @Autowired
+    @Autowired
     private LoginController loginController;
 
     @Override
@@ -146,7 +146,11 @@ public class TestLoginScene implements LoginScene {
 //        leftFrame.setSpacing(20);
 
         loginButton.setOnAction(event -> {
-            String response = loginController.loginButtonClicked(((TextField)loginForm.getChildren().get(0)).getText(), ((PasswordField)loginForm.getChildren().get(1)).getText());
+            HBox hb = (HBox) loginForm.getChildren().get(0);
+            TextField tf1 = (TextField) hb.getChildren().get(1);
+            hb = (HBox) loginForm.getChildren().get(1);
+            PasswordField tf2 = (PasswordField) hb.getChildren().get(1);
+            String response = loginController.loginButtonClicked(tf1.getText(), tf2.getText());
             if (response == null) {
                 status.setVisible(true);
             }
